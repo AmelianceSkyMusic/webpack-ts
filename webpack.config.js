@@ -13,7 +13,7 @@ const isProduction = process.env.NODE_ENV == 'production';
 const stylesHandler = MiniCssExtractPlugin.loader;
 
 
-// ^------------------------ add side plugins ------------------------
+// ^------------------------ Add Side Plugins ------------------------
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // #asm подключения плагина для очистики
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -57,6 +57,10 @@ const config = {
 	},
 
 
+	// ^------------------------ Devtool ------------------------
+
+	devtool: isProduction ? false : 'source-map', // #asm подключение карты кода для разработки
+
 	// ^------------------------ Optimization ------------------------
 	// ^------------------------ DevServer ------------------------
 
@@ -79,7 +83,9 @@ const config = {
       inject: 'body', // #asm вставка js в конец body
 		}),
 
-		new MiniCssExtractPlugin(),
+		new MiniCssExtractPlugin({
+			filename: filename('css'), // #asm имя файла выхода
+		}),
 
 		new CleanWebpackPlugin({  // #asm плагин для очистки
 			// cleanStaleWebpackAssets: false // #asm настройка что бы не удалять ассетсы
@@ -87,7 +93,7 @@ const config = {
 
 		new CopyWebpackPlugin({ // #asm плагин для переноса файлов
       patterns: [
-        { from: './assets', to: 'assets' },
+        { from: 'assets', to: 'assets' },
         // { from: 'assets/favicon.ico', to: 'assets' },
         // { from: 'assets/img', to: 'assets/img' },
         // { from: 'assets/svg', to: 'assets/svg' },
