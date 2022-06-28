@@ -1,0 +1,19 @@
+{
+  "name": "webpack-ts",
+  "version": "1.0.0",
+  "description": "Webpack TypeScript template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmelianceSkyMusic/webpack-ts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmelianceSkyMusic/webpack-ts/issues"
+  },
+  "homepage": "https://github.com/AmelianceSkyMusic/webpack-ts#readme"
+}
