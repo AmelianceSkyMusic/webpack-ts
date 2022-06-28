@@ -1,0 +1,59 @@
+{
+	"files": [
+		{
+			"path": "webpack.config.js",
+			"bookmarks": [
+				{
+					"line": 2,
+					"column": 39,
+					"label": "!--REQUIRE"
+				},
+				{
+					"line": 21,
+					"column": 39,
+					"label": "!--CONFIG"
+				},
+				{
+					"line": 28,
+					"column": 36,
+					"label": "    Entry"
+				},
+				{
+					"line": 42,
+					"column": 37,
+					"label": "    Output"
+				},
+				{
+					"line": 52,
+					"column": 43,
+					"label": "    Optimization"
+				},
+				{
+					"line": 53,
+					"column": 40,
+					"label": "    DevServer"
+				},
+				{
+					"line": 61,
+					"column": 40,
+					"label": "    Plugins"
+				},
+				{
+					"line": 81,
+					"column": 33,
+					"label": "    Modules / Loaders"
+				},
+				{
+					"line": 109,
+					"column": 38,
+					"label": "    Resolve"
+				},
+				{
+					"line": 120,
+					"column": 30,
+					"label": "!--MODULE EXPORT"
+				}
+			]
+		}
+	]
+}
