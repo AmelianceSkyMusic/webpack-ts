@@ -12,6 +12,13 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 const stylesHandler = MiniCssExtractPlugin.loader;
 
+
+// ^------------------------ add side plugins ------------------------
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // #asm подключения плагина для очистики
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+
 // ^------------------------  ------------------------
 const filename = (ext) => (isProduction ? `[name].[hash].${ext}` : `[name].${ext}`);
 
@@ -63,7 +70,7 @@ const config = {
 
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: './index.html',
+			template: '../index.html',
       filename: 'index.html', // #asm имя файла выхода
       // filename: '[hash]_another-name.html', // #asm возможность переименовать файл при билде
       // chunks: ['theme-dark', 'theme-light', 'theme-gradient', 'theme-bordered', 'index'], // #asm подключение чанков для вывода
@@ -73,6 +80,19 @@ const config = {
 		}),
 
 		new MiniCssExtractPlugin(),
+
+		new CleanWebpackPlugin({  // #asm плагин для очистки
+			// cleanStaleWebpackAssets: false // #asm настройка что бы не удалять ассетсы
+		}),
+
+		new CopyWebpackPlugin({ // #asm плагин для переноса файлов
+      patterns: [
+        { from: './assets', to: 'assets' },
+        // { from: 'assets/favicon.ico', to: 'assets' },
+        // { from: 'assets/img', to: 'assets/img' },
+        // { from: 'assets/svg', to: 'assets/svg' },
+      ],
+    }),
 
 		// Add your plugins here
 		// Learn more about plugins from https://webpack.js.org/configuration/plugins/
