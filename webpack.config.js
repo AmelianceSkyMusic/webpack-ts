@@ -17,12 +17,13 @@ const stylesHandler = MiniCssExtractPlugin.loader;
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // #asm подключения плагина для очистики
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const EslintWebpackPlugin = require('eslint-webpack-plugin');
 
 
 // ^------------------------  ------------------------
 const generateFilename = (ext) => (isProduction ? `[name].[hash].${ext}` : `[name].${ext}`);
 
-
+const setEslintWebpackPlugin = () => isProduction ? [] : [ new EslintWebpackPlugin({extension: ['ts','js']}) ];
 
 
 // >----------------------------------------------------------------<
@@ -30,8 +31,8 @@ const generateFilename = (ext) => (isProduction ? `[name].[hash].${ext}` : `[nam
 // >----------------------------------------------------------------<
 
 const config = {
-  context: path.resolve(__dirname, 'src'), // #asm указываем глобальный контекст для поиска файлов, уже не нужно кругом писать путь к рабочей директории
-  // ????? теперь в файле индексам можно указивать относительный путь через @
+	context: path.resolve(__dirname, 'src'), // #asm указываем глобальный контекст для поиска файлов, уже не нужно кругом писать путь к рабочей директории
+	// ????? теперь в файле индексам можно указивать относительный путь через @
 
 	// ^------------------------ Entry ------------------------
 	entry: {
@@ -71,7 +72,7 @@ const config = {
 
 	// ^------------------------ DevServer ------------------------
 
-  devServer: isProduction ? {} : {
+	devServer: isProduction ? {} : {
 		open: true,
 		host: 'localhost',
 		hot: false,
@@ -83,12 +84,12 @@ const config = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: '../index.html',
-      filename: 'index.html', // #asm имя файла выхода
-      // filename: '[hash]_another-name.html', // #asm возможность переименовать файл при билде
-      // chunks: ['theme-dark', 'theme-light', 'theme-gradient', 'theme-bordered', 'index'], // #asm подключение чанков для вывода
-      // minify: false, // #asm отключение минификации
-      // minify: true, // #asm отключение минификации
-      inject: 'body', // #asm вставка js в конец body
+			filename: 'index.html', // #asm имя файла выхода
+			// filename: '[hash]_another-name.html', // #asm возможность переименовать файл при билде
+			// chunks: ['theme-dark', 'theme-light', 'theme-gradient', 'theme-bordered', 'index'], // #asm подключение чанков для вывода
+			// minify: false, // #asm отключение минификации
+			// minify: true, // #asm отключение минификации
+			inject: 'body', // #asm вставка js в конец body
 		}),
 
 		new MiniCssExtractPlugin({
@@ -99,14 +100,16 @@ const config = {
 			// cleanStaleWebpackAssets: false // #asm настройка что бы не удалять ассетсы
 		}),
 
+		...setEslintWebpackPlugin(),
+
 		new CopyWebpackPlugin({ // #asm плагин для переноса файлов
-      patterns: [
-        { from: 'assets', to: 'assets' },
-        // { from: 'assets/favicon.ico', to: 'assets' },
-        // { from: 'assets/img', to: 'assets/img' },
-        // { from: 'assets/svg', to: 'assets/svg' },
-      ],
-    }),
+			patterns: [
+				{ from: 'assets', to: 'assets' },
+				// { from: 'assets/favicon.ico', to: 'assets' },
+				// { from: 'assets/img', to: 'assets/img' },
+				// { from: 'assets/svg', to: 'assets/svg' },
+			],
+		}),
 
 		// Add your plugins here
 		// Learn more about plugins from https://webpack.js.org/configuration/plugins/
@@ -146,11 +149,11 @@ const config = {
 	resolve: {
 		extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
 		// alias: { // #asm сокращение которые можно использовтаь в путях
-    //   '@': path.resolve(__dirname, 'src'),
-    //   '@assets': path.resolve(__dirname, 'src/assets'),
-    //   '@css': path.resolve(__dirname, 'src/css'),
-    //   '@scripts': path.resolve(__dirname, 'src/scripts'),
-    // },
+		//   '@': path.resolve(__dirname, 'src'),
+		//   '@assets': path.resolve(__dirname, 'src/assets'),
+		//   '@css': path.resolve(__dirname, 'src/css'),
+		//   '@scripts': path.resolve(__dirname, 'src/scripts'),
+		// },
 	},
 };
 
