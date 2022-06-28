@@ -34,32 +34,32 @@
 					"label": "    Devtool"
 				},
 				{
-					"line": 63,
+					"line": 64,
 					"column": 43,
 					"label": "    Optimization"
 				},
 				{
-					"line": 64,
+					"line": 71,
 					"column": 40,
 					"label": "    DevServer"
 				},
 				{
-					"line": 72,
+					"line": 80,
 					"column": 40,
 					"label": "    Plugins"
 				},
 				{
-					"line": 107,
+					"line": 115,
 					"column": 33,
 					"label": "    Modules / Loaders"
 				},
 				{
-					"line": 135,
+					"line": 143,
 					"column": 38,
 					"label": "    Resolve"
 				},
 				{
-					"line": 146,
+					"line": 160,
 					"column": 30,
 					"label": "!--MODULE EXPORT"
 				}

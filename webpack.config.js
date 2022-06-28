@@ -20,7 +20,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 // ^------------------------  ------------------------
-const filename = (ext) => (isProduction ? `[name].[hash].${ext}` : `[name].${ext}`);
+const generateFilename = (ext) => (isProduction ? `[name].[hash].${ext}` : `[name].${ext}`);
 
 
 
@@ -51,22 +51,30 @@ const config = {
 	output: {
 		path: path.resolve(__dirname, 'dist'), // #asm путь к директории выхода
 		// filename: 'bundle.js', // #asm имя файла выхода
-		filename: filename('js'), // #asm имя файла выхода
+		filename: generateFilename('js'), // #asm имя файла выхода
 		// filename: '[hash]-bundle.js',
-		assetModuleFilename: '[path][name].[hash].[ext][query]' // #asm путь к assets к случае подключения и копирования через js
+		// assetModuleFilename: '[path][name].[hash].[ext][query]' // #asm путь к assets к случае подключения и копирования через js
 	},
 
 
 	// ^------------------------ Devtool ------------------------
 
-	devtool: isProduction ? false : 'source-map', // #asm подключение карты кода для разработки
+	devtool: isProduction ? false : 'source-map' , // #asm подключение карты кода для разработки
+
 
 	// ^------------------------ Optimization ------------------------
+
+	// optimization: {
+	// 	chunks: 'all', // #asm оптимизация кода для выненесния повторющихся кодов в одельные чанки
+	// },
+
+
 	// ^------------------------ DevServer ------------------------
 
-	devServer: {
+  devServer: isProduction ? {} : {
 		open: true,
 		host: 'localhost',
+		hot: false,
 	},
 
 
@@ -84,7 +92,7 @@ const config = {
 		}),
 
 		new MiniCssExtractPlugin({
-			filename: filename('css'), // #asm имя файла выхода
+			filename: generateFilename('css'), // #asm имя файла выхода
 		}),
 
 		new CleanWebpackPlugin({  // #asm плагин для очистки
@@ -137,6 +145,12 @@ const config = {
 
 	resolve: {
 		extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
+		// alias: { // #asm сокращение которые можно использовтаь в путях
+    //   '@': path.resolve(__dirname, 'src'),
+    //   '@assets': path.resolve(__dirname, 'src/assets'),
+    //   '@css': path.resolve(__dirname, 'src/css'),
+    //   '@scripts': path.resolve(__dirname, 'src/scripts'),
+    // },
 	},
 };
 
