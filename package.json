@@ -19,7 +19,12 @@
     "type": "git",
     "url": "git+https://github.com/AmelianceSkyMusic/webpack-ts.git"
   },
-  "author": "",
+  "keywords": [
+    "webpack",
+    "typescript",
+    "eslint"
+  ],
+  "author": "Ameliance SkyMusic <amelianceskymusic@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AmelianceSkyMusic/webpack-ts/issues"
@@ -34,6 +39,7 @@
     "css-loader": "^6.7.1",
     "eslint": "^8.18.0",
     "eslint-webpack-plugin": "^3.2.0",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.0",
     "sass": "^1.51.0",
