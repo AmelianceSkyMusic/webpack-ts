@@ -2,12 +2,13 @@ module.exports = {
 
 	'env': {
 		'browser': true,
+		'node': true,
 		'es2021': true
 	},
 	'extends': [
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
-		'plugin:@typescript-eslint/recommended-requiring-type-checking'
+		// 'plugin:@typescript-eslint/recommended-requiring-type-checking'
 	],
 	'parser': '@typescript-eslint/parser',
 	'parserOptions': {
@@ -34,6 +35,6 @@ module.exports = {
 			'error',
 			'always'
 		],
-		'@typescript-eslint/rule-name': 'error'
+		'@typescript-eslint/no-explicit-any': 2, // 0 - off, 1 - warn, 2 - error
 	}
 };
