@@ -14,52 +14,52 @@
 					"label": "    Add Side Plugins"
 				},
 				{
-					"line": 29,
+					"line": 30,
 					"column": 39,
 					"label": "!--CONFIG"
 				},
 				{
-					"line": 36,
+					"line": 37,
 					"column": 36,
 					"label": "    Entry"
 				},
 				{
-					"line": 50,
+					"line": 51,
 					"column": 37,
 					"label": "    Output"
 				},
 				{
-					"line": 60,
+					"line": 61,
 					"column": 37,
 					"label": "    Devtool"
 				},
 				{
-					"line": 65,
+					"line": 66,
 					"column": 43,
 					"label": "    Optimization"
 				},
 				{
-					"line": 72,
+					"line": 73,
 					"column": 40,
 					"label": "    DevServer"
 				},
 				{
-					"line": 81,
+					"line": 82,
 					"column": 40,
 					"label": "    Plugins"
 				},
 				{
-					"line": 118,
+					"line": 119,
 					"column": 33,
 					"label": "    Modules / Loaders"
 				},
 				{
-					"line": 146,
+					"line": 147,
 					"column": 38,
 					"label": "    Resolve"
 				},
 				{
-					"line": 163,
+					"line": 164,
 					"column": 30,
 					"label": "!--MODULE EXPORT"
 				}

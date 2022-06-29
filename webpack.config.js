@@ -23,7 +23,8 @@ const EslintWebpackPlugin = require('eslint-webpack-plugin');
 // ^------------------------  ------------------------
 const generateFilename = (ext) => (isProduction ? `[name].[hash].${ext}` : `[name].${ext}`);
 
-const setEslintWebpackPlugin = () => isProduction ? [] : [ new EslintWebpackPlugin({extension: ['ts','js']}) ];
+// const setEslintWebpackPlugin = () => isProduction ? [] : [ new EslintWebpackPlugin({extensions: ['ts','js']}) ];
+const setEslintWebpackPlugin = () => !isProduction ? [ new EslintWebpackPlugin({extensions: ['ts','js']}) ] : [ new EslintWebpackPlugin({extensions: ['ts','js']}) ];
 
 
 // >----------------------------------------------------------------<
